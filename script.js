@@ -97,3 +97,25 @@ sections.forEach(current =>{
 })
 }
 window.addEventListener('scroll', scrollActive)
+
+//notification case
+    document.addEventListener('DOMContentLoaded', () => {
+        const notification = document.getElementById('portfolioNotification');
+
+        function showNotification() {
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 1500);
+        }
+
+        window.dismissNotification = function() {
+            notification.classList.remove('show');
+            notification.addEventListener('transitionend', () => {
+                if (!notification.classList.contains('show')) {
+                    notification.style.display = 'none';
+                }
+            }, { once: true });
+        };
+
+        showNotification();
+    });
