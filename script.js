@@ -1,4 +1,8 @@
-
+window.addEventListener('load', () => {
+   setTimeout(() => {
+      document.getElementById('loadingScreen').classList.add('hidden');
+   }, 1000);
+});
 document.addEventListener('DOMContentLoaded', () => {
   const toggleSwitch = document.getElementById('toggle-switch');
   const body = document.body;
@@ -119,3 +123,4 @@ window.addEventListener('scroll', scrollActive)
 
         showNotification();
     });
+
