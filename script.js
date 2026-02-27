@@ -124,3 +124,44 @@ window.addEventListener('scroll', scrollActive)
         showNotification();
     });
 
+let current = 0;
+let sections = document.getElementsByClassName("cv-section");
+let stepNumber = document.getElementById("stepNumber");
+let prevBtn = document.getElementById("prevBtn");
+let nextBtn = document.getElementById("nextBtn");
+
+function openCV(){
+    document.getElementById("cvModal").style.display="flex";
+    showStep(current);
+}
+
+function closeCV(){
+    document.getElementById("cvModal").style.display="none";
+}
+
+function showStep(index){
+    for(let i=0;i<sections.length;i++){
+        sections[i].classList.remove("active");
+    }
+    sections[index].classList.add("active");
+    stepNumber.textContent = index + 1;
+
+    prevBtn.disabled = index === 0;
+    nextBtn.disabled = index === sections.length - 1;
+}
+
+function nextStep(){
+    if(current < sections.length - 1){
+        current++;
+        showStep(current);
+    }
+}
+
+function prevStep(){
+    if(current > 0){
+        current--;
+        showStep(current);
+    }
+}
+
+
