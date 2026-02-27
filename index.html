@@ -198,26 +198,54 @@ Website: www.jvcodes.com
                   <p><i class="uil uil-phone"></i> Tel: +250 794786783</p>
               </div>
            </div>
-           <div class="col">
-<form action="https://api.web3forms.com/submit" method="POST">
-      
-      <!-- 🔑 PUT YOUR ACCESS KEY HERE -->
-      <input type="hidden" name="access_key" value="50ccc4f9-517b-4d4f-bbc1-4e1ce26abb56">
-              <div class="form-control">
-                  <div class="form-inputs">
-                      <input type="text" class="input-field" placeholder="Name">
-                      <input type="text" class="input-field" placeholder="Email">
-                  </div>
-                  <div class="text-area">
-                      <textarea placeholder="Message"></textarea>
-                  </div>
-                  <div class="form-button">
-                      <button class="btn">Send <i class="uil uil-message"></i></button>
-                  </div>
-              </div>
-           </div>
-        </div>
-       </form>    
+<div class="col">
+  <form action="https://api.web3forms.com/submit" method="POST">
+
+    <!-- 🔑 Your Access Key -->
+    <input type="hidden" name="access_key" value="50ccc4f9-517b-4d4f-bbc1-4e1ce26abb56">
+
+    <!-- Optional: Email Subject -->
+    <input type="hidden" name="subject" value="New Contact Form Submission">
+
+    <!-- Optional: Redirect After Success -->
+    <!-- <input type="hidden" name="redirect" value="https://yourwebsite.com/thank-you.html"> -->
+
+    <div class="form-control">
+      <div class="form-inputs">
+        <input 
+          type="text" 
+          name="name" 
+          class="input-field" 
+          placeholder="Name" 
+          required
+        >
+
+        <input 
+          type="email" 
+          name="email" 
+          class="input-field" 
+          placeholder="Email" 
+          required
+        >
+      </div>
+
+      <div class="text-area">
+        <textarea 
+          name="message" 
+          placeholder="Message" 
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-button">
+        <button type="submit" class="btn">
+          Send <i class="uil uil-message"></i>
+        </button>
+      </div>
+    </div>
+
+  </form>
+</div>   
      </section>
     </main>
     <!-- -- Footer -- -->
@@ -281,6 +309,7 @@ Website: www.jvcodes.com
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
