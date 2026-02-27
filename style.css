@@ -8,9 +8,21 @@ Website: www.jvcodes.com
 /* ----- Poppins font link ----- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-:root{
+
+:root {
     --first-color: rgb(216, 86, 0);
+	--primary: #00f0ff;
+	--secondary: #ff00d4;
+	--accent: #9d4edd;
+	--dark-1: #0a0a12;
+	--dark-2: #12121f;
+	--dark-3: #1a1a2e;
+	--glass-bg: rgba(255, 255, 255, 0.03);
+	--glass-border: rgba(255, 255, 255, 0.08);
+	--glow-cyan: rgba(0, 240, 255, 0.4);
+	--glow-magenta: rgba(255, 0, 212, 0.4);
 }
+
 
 /* -- Base Styles -- */
 *{
@@ -1062,4 +1074,5 @@ ul{
             width: 100%;
         }
     }
+
 
