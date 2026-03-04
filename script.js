@@ -1,7 +1,7 @@
 window.addEventListener('load', () => {
    setTimeout(() => {
       document.getElementById('loadingScreen').classList.add('hidden');
-   }, 1000);
+   }, 200);
 });
 document.addEventListener('DOMContentLoaded', () => {
   const toggleSwitch = document.getElementById('toggle-switch');
@@ -163,5 +163,6 @@ function prevStep(){
         showStep(current);
     }
 }
+
 
 
