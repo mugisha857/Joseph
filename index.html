@@ -21,7 +21,6 @@ Website: www.jvcodes.com
 <div class="loading-screen" id="loadingScreen">
   <div class="loader-ring"></div>
   <div class="loading-text">Welcome I'am a remarkable Web Developer...</div>
-  <div class="loading-text">Sorry the potifolio still in Development...</div>
 </div>
    
     <div class="container">
@@ -306,49 +305,49 @@ Website: www.jvcodes.com
     </div>
 </div>
 
-<div class="modal" id="cvModal">
-  <div class="modal-content">
-    <span class="close" onclick="closeCV()">&times;</span>
+<div class="cvm-modal" id="cvModal">
+  <div class="cvm-modal-wrapper">
+    <span class="cvm-modal-close-btn" onclick="closeCV()">&times;</span>
 
-    <div class="step-indicator">
+    <div class="cvm-step-indicator">
         Step <span id="stepNumber">1</span> of 7
     </div>
 
-    <!-- Section 1: Profile with Image -->
-    <div class="cv-section active card">
-        <div class="profile-container">
-            <img src="images/potifolio.jpg" alt="Profile Image">
-            <div>
-                <h2>Feel Free To Explore</h2>
-                <p><strong><i class="fas fa-briefcase icon"></i> Software Developer</strong></p>
-                <p><i class="fas fa-envelope icon"></i> umugishajoseph@gmail.com</p>
-                <p><i class="fas fa-phone icon"></i> +250 794 786 783 <strong>(UMUGISHA Joseph)</strong></p>
+    <!-- Section 1: Profile -->
+    <div class="cvm-section cvm-section-profile cvm-section-active cvm-card">
+        <div class="cvm-profile-wrapper">
+            <img src="images/potifolio.jpg" alt="Profile Image" class="cvm-profile-image">
+            <div class="cvm-profile-details">
+                <h2 class="cvm-profile-title">Feel Free To Explore</h2>
+                <p class="cvm-profile-role"><strong><i class="fas fa-briefcase cvm-icon"></i> Software Developer</strong></p>
+                <p class="cvm-profile-email"><i class="fas fa-envelope cvm-icon"></i> umugishajoseph@gmail.com</p>
+                <p class="cvm-profile-phone"><i class="fas fa-phone cvm-icon"></i> +250 794 786 783 <strong>(UMUGISHA Joseph)</strong></p>
             </div>
         </div>
     </div>
 
     <!-- Section 2: Skills -->
-    <div class="cv-section card">
-        <h3><i class="fas fa-lightbulb icon"></i> Skills</h3>
-        <ul>
+    <div class="cvm-section cvm-section-skills cvm-card">
+        <h3 class="cvm-section-title"><i class="fas fa-lightbulb cvm-icon"></i> Skills</h3>
+        <ul class="cvm-skill-list">
             <li>Responsive Web Design</li>
             <li>Backend Development</li>
             <li>Mobile Applications Development</li>
             <li>Git & GitHub</li>
             <li>Team Collaboration</li>
         </ul>
-        <h4>Other Skills:</h4>
-        <ul>
+        <h4 class="cvm-subtitle">Other Skills:</h4>
+        <ul class="cvm-other-skills-list">
             <li>Customer Care Services</li>
             <li>Protocol Services</li>
         </ul>
     </div>
 
     <!-- Section 3: Work Experience -->
-    <div class="cv-section card">
-        <h3><i class="fas fa-briefcase icon"></i> Work Experience</h3>
-        <p><strong>Frontend Developer</strong> – <span style="color: green;">JO</span> Tech (2025–Present)</p>
-        <ul>
+    <div class="cvm-section cvm-section-work cvm-card">
+        <h3 class="cvm-section-title"><i class="fas fa-briefcase cvm-icon"></i> Work Experience</h3>
+        <p class="cvm-work-role"><strong>Frontend Developer</strong> – <span class="cvm-work-company">JO Tech</span> (2025–Present)</p>
+        <ul class="cvm-work-list">
             <li>Developed 10+ responsive web applications</li>
             <li>Improved website performance by 30%</li>
             <li>Collaborated with designers and backend developers</li>
@@ -357,22 +356,22 @@ Website: www.jvcodes.com
     </div>
 
     <!-- Section 4: Education -->
-    <div class="cv-section card">
-        <h3><i class="fas fa-graduation-cap icon"></i> Education</h3>
-        <p>Secondary Diploma 2025-2026</p>
-        <ul>
+    <div class="cvm-section cvm-section-education cvm-card">
+        <h3 class="cvm-section-title"><i class="fas fa-graduation-cap cvm-icon"></i> Education</h3>
+        <p class="cvm-education-diploma">Secondary Diploma 2025-2026</p>
+        <ul class="cvm-education-list">
             <li>College APPEC Tss</li>
         </ul>
-        <p>O'level Certificate 2023–2024</p>
-        <ul>
+        <p class="cvm-education-certificate">O'level Certificate 2023–2024</p>
+        <ul class="cvm-education-list">
             <li>Saint JOSEPH Birambo</li>
         </ul>
     </div>
 
     <!-- Section 5: Projects -->
-    <div class="cv-section card">
-        <h3><i class="fas fa-project-diagram icon"></i> Projects</h3>
-        <ul>
+    <div class="cvm-section cvm-section-projects cvm-card">
+        <h3 class="cvm-section-title"><i class="fas fa-project-diagram cvm-icon"></i> Projects</h3>
+        <ul class="cvm-project-list">
             <li>Portfolio Website – Built using React & CSS animations</li>
             <li>E-commerce UI – Responsive shopping interface</li>
             <li>Employee Management System - Easy management services</li>
@@ -380,47 +379,44 @@ Website: www.jvcodes.com
     </div>
 
     <!-- Section 6: Certifications -->
-    <div class="cv-section card">
-        <h3><i class="fas fa-certificate icon"></i> Certifications</h3>
-        <ul>
-            <li>Software Development Certification</li>
-                       <strong style="color: green;">– MASTARY HUB OF RWANDA</strong>
-            <li>Ordinary Advanced Course</li>
-                        <strong style="color: green;">– Saint JOSEPH BIRAMBO</strong>
-            <li>Accountant Manager for Association</li>
-                        <strong style="color: green;">– MOUVEMENT RAJEPRA Appec </strong>
+    <div class="cvm-section cvm-section-certifications cvm-card">
+        <h3 class="cvm-section-title"><i class="fas fa-certificate cvm-icon"></i> Certifications</h3>
+        <ul class="cvm-certification-list">
+            <li>Software Development Certification <strong class="cvm-cert-issuer">– MASTARY HUB OF RWANDA</strong></li>
+            <li>Ordinary Advanced Course <strong class="cvm-cert-issuer">– Saint JOSEPH BIRAMBO</strong></li>
+            <li>Accountant Manager for Association <strong class="cvm-cert-issuer">– MOUVEMENT RAJEPRA Appec</strong></li>
         </ul>
     </div>
 
     <!-- Section 7: References -->
-    <div class="cv-section card">
-        <h3><i class="fas fa-address-book icon"></i> References</h3>
-        <ul>
+    <div class="cvm-section cvm-section-references cvm-card">
+        <h3 class="cvm-section-title"><i class="fas fa-address-book cvm-icon"></i> References</h3>
+        <ul class="cvm-reference-list">
             <li>Mastery Hub of Rwanda</li>
             <li>College APPEC Staff</li>
         </ul>
 
-        <h3><i class="fas fa-user-tie icon"></i> Professional Summary</h3>
-        <p>
+        <h3 class="cvm-section-title"><i class="fas fa-user-tie cvm-icon"></i> Professional Summary</h3>
+        <p class="cvm-summary">
         Results-driven Frontend Developer with 2+ years of experience 
         building responsive and user-friendly web applications. 
         Skilled in modern JavaScript frameworks and performance optimization.
         </p>
     </div>
 
-    <div class="nav-buttons">
-        <button onclick="prevStep()" id="prevBtn"><i class="fas fa-arrow-left"></i> Back</button>
-        <button onclick="nextStep()" id="nextBtn">Next <i class="fas fa-arrow-right"></i></button>
+    <div class="cvm-nav-buttons">
+        <button onclick="prevStep()" id="prevBtn" class="cvm-btn-prev"><i class="fas fa-arrow-left"></i> Back</button>
+        <button onclick="nextStep()" id="nextBtn" class="cvm-btn-next">Next <i class="fas fa-arrow-right"></i></button>
     </div>
 
   </div>
-</div>
-    <!-- -- JS Link -- -->
+</div>    <!-- -- JS Link -- -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
