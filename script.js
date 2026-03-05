@@ -1,5 +1,5 @@
 let current = 0;
-let sections = document.getElementsByClassName("cv-section");
+let sections = document.getElementsByClassName("cvm-section");
 let stepNumber = document.getElementById("stepNumber");
 let prevBtn = document.getElementById("prevBtn");
 let nextBtn = document.getElementById("nextBtn");
@@ -151,36 +151,47 @@ document.addEventListener('DOMContentLoaded', () => {
     showNotification();
 });
 
-/* -- CV Modal Logic -- */
-function openCV(){
-    document.getElementById("cvModal").style.display="flex";
-    showStep(current);
+let current = 0;
+let sections = document.getElementsByClassName("cvm-section");
+let stepNumber = document.getElementById("stepNumber");
+let prevBtn = document.getElementById("prevBtn");
+let nextBtn = document.getElementById("nextBtn");
+
+function openCV() {
+    const modal = document.getElementById("cvModal");
+    if(modal) {
+        modal.style.display = "flex";
+        showStep(current);
+    }
 }
 
-function closeCV(){
-    document.getElementById("cvModal").style.display="none";
+function closeCV() {
+    const modal = document.getElementById("cvModal");
+    if(modal) {
+        modal.style.display = "none";
+    }
 }
 
-function showStep(index){
-    for(let i=0;i<sections.length;i++){
-        sections[i].classList.remove("active");
+function showStep(index) {
+    for(let i = 0; i < sections.length; i++){
+        sections[i].classList.remove("cvm-section-active");
     }
 
-    sections[index].classList.add("active");
+    sections[index].classList.add("cvm-section-active");
     stepNumber.textContent = index + 1;
 
     prevBtn.disabled = index === 0;
     nextBtn.disabled = index === sections.length - 1;
 }
 
-function nextStep(){
+function nextStep() {
     if(current < sections.length - 1){
         current++;
         showStep(current);
     }
 }
 
-function prevStep(){
+function prevStep() {
     if(current > 0){
         current--;
         showStep(current);
