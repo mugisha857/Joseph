@@ -9,12 +9,16 @@ window.addEventListener('load', () => {
       document.getElementById('loadingScreen').classList.add('hidden');
    }, 200);
 });
+
 document.addEventListener('DOMContentLoaded', () => {
   const toggleSwitch = document.getElementById('toggle-switch');
   const body = document.body;
-  toggleSwitch.addEventListener('click', () => {
-      body.classList.toggle('dark');
-  });
+
+  if (toggleSwitch) {
+    toggleSwitch.addEventListener('click', () => {
+        body.classList.toggle('dark');
+    });
+  }
 });
 
 /* -- Navigation Function -- */
@@ -29,9 +33,13 @@ function myMenuFunction(){
 
 /* -- Add shadow to the navigation bar when scrolling -- */
 window.onscroll = function() {headerShadow()};
+
 function headerShadow() {
-  const navHeader =document.getElementById("header");
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop >  50) {
+  const navHeader = document.getElementById("header");
+
+  if (!navHeader) return;
+
+  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.8)";
     navHeader.style.height = "70px";
     navHeader.style.lineHeight = "70px";
@@ -46,7 +54,7 @@ function headerShadow() {
 var typingEffect = new Typed(".typedText",{
   strings : ["Web Designer","YouTuber","Developer","Coder","AI Expert","Marketer"],
   loop : true,
-  typeSpeed : 100, 
+  typeSpeed : 100,
   backSpeed : 80,
   backDelay : 2000
 })
@@ -66,72 +74,84 @@ sr.reveal('.featured-text-info',{delay: 200})
 sr.reveal('.featured-text-btn',{delay: 200})
 sr.reveal('.social_icons',{delay: 200})
 sr.reveal('.featured-image',{delay: 300})
+
 /* -- Project Box -- */
 sr.reveal('.project-box',{interval: 200})
+
 /* -- Headings -- */
 sr.reveal('.top-header',{})
 
 /* -- Scroll reveal left-right animation -- */
-/* -- About info & Contact info -- */
 const srLeft = ScrollReveal({
   origin: 'left',
-distance: '80px',
-duration: 2000,
-reset: true
+  distance: '80px',
+  duration: 2000,
+  reset: true
 })
+
 srLeft.reveal('.about-info',{delay: 100})
 srLeft.reveal('.contact-info',{delay: 100})
-/* -- About skills & Form box -- */
+
 const srRight = ScrollReveal({
   origin: 'right',
-distance: '80px',
-duration: 2000,
-reset: true
+  distance: '80px',
+  duration: 2000,
+  reset: true
 })
+
 srRight.reveal('.skills-box',{delay: 100})
 srRight.reveal('.form-control',{delay: 100})
 
 /* ----- Change active link ----- */
-const sections = document.querySelectorAll('section[id]')
+const pageSections = document.querySelectorAll('section[id]')
+
 function scrollActive() {
-const scrollY = window.scrollY;
-sections.forEach(current =>{
-  const sectionHeight = current.offsetHeight,
-      sectionTop = current.offsetTop - 50,
+  const scrollY = window.scrollY;
+
+  pageSections.forEach(current =>{
+    const sectionHeight = current.offsetHeight,
+    sectionTop = current.offsetTop - 50,
     sectionId = current.getAttribute('id')
-  if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
-      document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.add('active-link')
-  }  else {
-    document.querySelector('.nav-menu a[href*=' + sectionId + ']').classList.remove('active-link')
-  }
-})
+
+    const link = document.querySelector('.nav-menu a[href*=' + sectionId + ']');
+
+    if(link){
+      if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
+          link.classList.add('active-link')
+      } else {
+          link.classList.remove('active-link')
+      }
+    }
+  })
 }
+
 window.addEventListener('scroll', scrollActive)
 
-//notification case
-    document.addEventListener('DOMContentLoaded', () => {
-        const notification = document.getElementById('portfolioNotification');
+/* -- notification case -- */
+document.addEventListener('DOMContentLoaded', () => {
+    const notification = document.getElementById('portfolioNotification');
 
-        function showNotification() {
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 1500);
-        }
+    if(!notification) return;
 
-        window.dismissNotification = function() {
-            notification.classList.remove('show');
-            notification.addEventListener('transitionend', () => {
-                if (!notification.classList.contains('show')) {
-                    notification.style.display = 'none';
-                }
-            }, { once: true });
-        };
+    function showNotification() {
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 1500);
+    }
 
-        showNotification();
-    });
+    window.dismissNotification = function() {
+        notification.classList.remove('show');
+        notification.addEventListener('transitionend', () => {
+            if (!notification.classList.contains('show')) {
+                notification.style.display = 'none';
+            }
+        }, { once: true });
+    };
 
+    showNotification();
+});
 
-
+/* -- CV Modal Logic -- */
 function openCV(){
     document.getElementById("cvModal").style.display="flex";
     showStep(current);
@@ -145,6 +165,7 @@ function showStep(index){
     for(let i=0;i<sections.length;i++){
         sections[i].classList.remove("active");
     }
+
     sections[index].classList.add("active");
     stepNumber.textContent = index + 1;
 
@@ -165,8 +186,3 @@ function prevStep(){
         showStep(current);
     }
 }
-
-
-
-
-
