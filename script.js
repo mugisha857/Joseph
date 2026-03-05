@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
    setTimeout(() => {
       document.getElementById('loadingScreen').classList.add('hidden');
+      document.getElementById('loadingScreen').Display =  "none";
    }, 200);
 });
 document.addEventListener('DOMContentLoaded', () => {
@@ -163,6 +164,7 @@ function prevStep(){
         showStep(current);
     }
 }
+
 
 
 
