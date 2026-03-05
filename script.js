@@ -1,7 +1,12 @@
+let current = 0;
+let sections = document.getElementsByClassName("cv-section");
+let stepNumber = document.getElementById("stepNumber");
+let prevBtn = document.getElementById("prevBtn");
+let nextBtn = document.getElementById("nextBtn");
+
 window.addEventListener('load', () => {
    setTimeout(() => {
       document.getElementById('loadingScreen').classList.add('hidden');
-      document.getElementById('loadingScreen').Display =  "none";
    }, 200);
 });
 document.addEventListener('DOMContentLoaded', () => {
@@ -125,11 +130,7 @@ window.addEventListener('scroll', scrollActive)
         showNotification();
     });
 
-let current = 0;
-let sections = document.getElementsByClassName("cv-section");
-let stepNumber = document.getElementById("stepNumber");
-let prevBtn = document.getElementById("prevBtn");
-let nextBtn = document.getElementById("nextBtn");
+
 
 function openCV(){
     document.getElementById("cvModal").style.display="flex";
@@ -164,6 +165,7 @@ function prevStep(){
         showStep(current);
     }
 }
+
 
 
 
