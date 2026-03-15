@@ -1,199 +1,78 @@
-let current = 0;
-let sections = document.getElementsByClassName("cvm-section");
-let stepNumber = document.getElementById("stepNumber");
-let prevBtn = document.getElementById("prevBtn");
-let nextBtn = document.getElementById("nextBtn");
+(function() {
+        // hide loading
+        setTimeout(() => document.getElementById('loadingScreen').style.opacity = '0', 800);
+        setTimeout(() => document.getElementById('loadingScreen').style.display = 'none', 1300);
 
-window.addEventListener('load', () => {
-   setTimeout(() => {
-      document.getElementById('loadingScreen').classList.add('hidden');
-   }, 200);
-});
+        // typed
+        new Typed('.typedText', { strings: ['architect','designer','problem solver'], loop: true, typeSpeed: 80 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleSwitch = document.getElementById('toggle-switch');
-  const body = document.body;
+        // notification dismiss
+        window.dismissNotification = () => document.getElementById('portfolioNotification').classList.remove('show');
 
-  if (toggleSwitch) {
-    toggleSwitch.addEventListener('click', () => {
-        body.classList.toggle('dark');
-    });
-  }
-});
+        // mobile menu
+        window.myMenuFunction = () => document.getElementById('myNavMenu').classList.toggle('responsive');
 
-/* -- Navigation Function -- */
-function myMenuFunction(){
-  var menuBtn = document.getElementById("myNavMenu");
-  if(menuBtn.className === "nav-menu"){
-    menuBtn.className += " responsive";
-  } else {
-    menuBtn.className = "nav-menu";
-  }
-}
+        // ---------- CV MODAL LOGIC (fully fixed) ----------
+        let step = 0;
+        const sections = document.getElementsByClassName('cvm-section');
+        const stepSpan = document.getElementById('stepNumber');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-/* -- Add shadow to the navigation bar when scrolling -- */
-window.onscroll = function() {headerShadow()};
+        function showStep(i) {
+            if (i < 0 || i >= sections.length) return;
+            // hide all
+            for (let s of sections) s.classList.remove('cvm-section-active');
+            // show current
+            sections[i].classList.add('cvm-section-active');
+            stepSpan.innerText = i + 1;
+            // button visibility
+            prevBtn.style.display = i === 0 ? 'none' : 'inline-flex';
+            nextBtn.style.display = i === sections.length-1 ? 'none' : 'inline-flex';
+        }
 
-function headerShadow() {
-  const navHeader = document.getElementById("header");
-
-  if (!navHeader) return;
-
-  if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.8)";
-    navHeader.style.height = "70px";
-    navHeader.style.lineHeight = "70px";
-  } else {
-    navHeader.style.boxShadow = "none";
-    navHeader.style.height = "90px";
-    navHeader.style.lineHeight = "90px";
-  }
-}
-
-/* -- Typing revealing effect -- */
-var typingEffect = new Typed(".typedText",{
-  strings : ["Web Designer","YouTuber","Developer","Coder","AI Expert","Marketer"],
-  loop : true,
-  typeSpeed : 100,
-  backSpeed : 80,
-  backDelay : 2000
-})
-
-/* -- Scroll reveal animation -- */
-const sr = ScrollReveal({
-  origin: 'top',
-  distance: '80px',
-  duration: 2000,
-  reset: true     
-})
-
-/* -- HOME -- */
-sr.reveal('.featured-text-card',{})
-sr.reveal('.featured-name',{delay: 100})
-sr.reveal('.featured-text-info',{delay: 200})
-sr.reveal('.featured-text-btn',{delay: 200})
-sr.reveal('.social_icons',{delay: 200})
-sr.reveal('.featured-image',{delay: 300})
-
-/* -- Project Box -- */
-sr.reveal('.project-box',{interval: 200})
-
-/* -- Headings -- */
-sr.reveal('.top-header',{})
-
-/* -- Scroll reveal left-right animation -- */
-const srLeft = ScrollReveal({
-  origin: 'left',
-  distance: '80px',
-  duration: 2000,
-  reset: true
-})
-
-srLeft.reveal('.about-info',{delay: 100})
-srLeft.reveal('.contact-info',{delay: 100})
-
-const srRight = ScrollReveal({
-  origin: 'right',
-  distance: '80px',
-  duration: 2000,
-  reset: true
-})
-
-srRight.reveal('.skills-box',{delay: 100})
-srRight.reveal('.form-control',{delay: 100})
-
-/* ----- Change active link ----- */
-const pageSections = document.querySelectorAll('section[id]')
-
-function scrollActive() {
-  const scrollY = window.scrollY;
-
-  pageSections.forEach(current =>{
-    const sectionHeight = current.offsetHeight,
-    sectionTop = current.offsetTop - 50,
-    sectionId = current.getAttribute('id')
-
-    const link = document.querySelector('.nav-menu a[href*=' + sectionId + ']');
-
-    if(link){
-      if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) { 
-          link.classList.add('active-link')
-      } else {
-          link.classList.remove('active-link')
-      }
-    }
-  })
-}
-
-window.addEventListener('scroll', scrollActive)
-
-/* -- notification case -- */
-document.addEventListener('DOMContentLoaded', () => {
-    const notification = document.getElementById('portfolioNotification');
-
-    if(!notification) return;
-
-    function showNotification() {
-        setTimeout(() => {
-            notification.classList.add('show');
-        }, 1500);
-    }
-
-    window.dismissNotification = function() {
-        notification.classList.remove('show');
-        notification.addEventListener('transitionend', () => {
-            if (!notification.classList.contains('show')) {
-                notification.style.display = 'none';
+        window.nextStep = function() {
+            if (step < sections.length - 1) {
+                step++;
+                showStep(step);
             }
-        }, { once: true });
-    };
+        };
 
-    showNotification();
-});
+        window.prevStep = function() {
+            if (step > 0) {
+                step--;
+                showStep(step);
+            }
+        };
 
-let current = 0;
-let sections = document.getElementsByClassName("cvm-section");
-let stepNumber = document.getElementById("stepNumber");
-let prevBtn = document.getElementById("prevBtn");
-let nextBtn = document.getElementById("nextBtn");
+        window.openCV = function() {
+            document.getElementById('cvModal').style.display = 'flex';
+            step = 0;
+            showStep(0);
+        };
 
-function openCV() {
-    const modal = document.getElementById("cvModal");
-    if(modal) {
-        modal.style.display = "flex";
-        showStep(current);
-    }
-}
+        window.closeCV = function() {
+            document.getElementById('cvModal').style.display = 'none';
+        };
 
-function closeCV() {
-    const modal = document.getElementById("cvModal");
-    if(modal) {
-        modal.style.display = "none";
-    }
-}
+        // dark mode toggle
+        const toggleSwitch = document.getElementById('toggle-switch');
+        if (toggleSwitch) {
+            toggleSwitch.addEventListener('click', () => {
+                document.body.classList.toggle('dark');
+            });
+        }
 
-function showStep(index) {
-    for(let i = 0; i < sections.length; i++){
-        sections[i].classList.remove("cvm-section-active");
-    }
-
-    sections[index].classList.add("cvm-section-active");
-    stepNumber.textContent = index + 1;
-
-    prevBtn.disabled = index === 0;
-    nextBtn.disabled = index === sections.length - 1;
-}
-
-function nextStep() {
-    if(current < sections.length - 1){
-        current++;
-        showStep(current);
-    }
-}
-
-function prevStep() {
-    if(current > 0){
-        current--;
-        showStep(current);
-    }
-}
+        // active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let scrollpos = window.scrollY;
+            document.querySelectorAll('section[id]').forEach(s => {
+                let top = s.offsetTop - 120, id = s.getAttribute('id');
+                if (scrollpos >= top) {
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active-link'));
+                    let activeLink = document.querySelector('.nav-link[href*='+id+']');
+                    if (activeLink) activeLink.classList.add('active-link');
+                }
+            });
+        });
+    })();
